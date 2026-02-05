@@ -133,7 +133,7 @@ async function insertInfoReadme(filepath: string, quiz: Quiz, locale: SupportedL
     .replace(
       /<!--info-footer-start-->[\s\S]*<!--info-footer-end-->/,
       '<!--info-footer-start--><br>'
-      + toBadgeLink(`../../${f('README', locale, 'md')}`, '', t(locale, 'badge.back'), 'grey')
+      + toBadgeLink(`../../../${f('README', locale, 'md')}`, '', t(locale, 'badge.back'), 'grey')
       + toBadgeLink(toAnswerShort(quiz.no, locale), '', t(locale, 'badge.share-your-solutions'), 'teal')
       + toBadgeLink(toSolutionsShort(quiz.no), '', t(locale, 'badge.checkout-solutions'), 'de5a77', '?logo=awesome-lists&logoColor=white')
       + (Array.isArray(info.related) && info.related.length ? `<hr><h3>${t(locale, 'readme.related-challenges')}</h3>${quizNoToBadges(info.related, quizzes, locale, true)}` : '')

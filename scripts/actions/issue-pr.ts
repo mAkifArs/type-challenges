@@ -9,7 +9,7 @@ import { resolveFilePath } from '../utils/resolve'
 import { formatToCode } from './utils/formatToCode'
 
 const Messages = {
-  'en': {
+  en: {
     info: 'Info',
     template: 'Template',
     tests: 'Test Cases',
@@ -17,24 +17,6 @@ const Messages = {
     issue_update_reply: '#{0} - Pull Request updated.',
     issue_invalid_reply:
       'Failed to parse the issue, please follow the template.',
-    pr_auto_translate_tips: 'Auto translated by Google Translate',
-  },
-  'zh-CN': {
-    info: '基本信息',
-    template: '题目模版',
-    tests: '判题测试',
-    issue_reply: '#{0} - PR 已生成',
-    issue_update_reply: '#{0} - PR 已更新',
-    issue_invalid_reply: 'Issue 格式不正确，请按照依照模版修正',
-    pr_auto_translate_tips: '通过谷歌 API 自动翻译',
-  },
-  'ja': {
-    info: '基本情報',
-    template: 'テンプレート',
-    tests: 'テストケース',
-    issue_reply: '#{0} - Pull Request created.',
-    issue_update_reply: '#{0} - Pull Request updated.',
-    issue_invalid_reply: 'Failed to parse the issue, please follow the template.',
     pr_auto_translate_tips: 'Auto translated by Google Translate',
   },
 }
@@ -55,7 +37,7 @@ const action: Action = async (github, context, core) => {
 
   // create pr for new challenge
   if (labels.includes('new-challenge')) {
-    const locale = labels.includes('ja') ? 'ja' : labels.includes('zh-CN') ? 'zh-CN' : 'en'
+    const locale = 'en'
 
     const body = issue.body || ''
     const infoRaw = getCodeBlock(body, Messages[locale].info, 'yaml')
@@ -127,7 +109,7 @@ const action: Action = async (github, context, core) => {
       i => i.user?.login === 'github-actions[bot]' && i.title.startsWith(`#${no} `),
     )
 
-    const dir = `questions/${getQuestionFullName(no, info.difficulty, info.title)}`
+    const dir = `questions/${info.difficulty}/${getQuestionFullName(no, info.difficulty, info.title)}`
     const userEmail = `${user.id}+${user.login}@users.noreply.github.com`
 
     const files: Record<string, string> = {

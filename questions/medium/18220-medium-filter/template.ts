@@ -1,0 +1,5 @@
+/**
+ * Implement the type `Filter<T, Predicate>`. Here `T` is an array, and `Predicate` is a primitive type or a union of primitive types. The result should be an array that contains only those elements whose types are included in `Predicate`.
+ */
+
+type Filter<T extends any[], P> = []

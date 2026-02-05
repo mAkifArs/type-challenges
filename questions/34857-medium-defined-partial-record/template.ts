@@ -1,1 +1,0 @@
-type DefinedPartial<T> = any

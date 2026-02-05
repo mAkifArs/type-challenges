@@ -1,1 +1,0 @@
-type ParseUrlParams<T> = any
